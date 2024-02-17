@@ -1,46 +1,26 @@
 #include <iostream>
-#include <cmath>
+#include <string>
+#define _USE_MATH_DEFINES
+#include <math.h>
 
-int factorial(int n);
-double function(double x, int n);
-double sum(double x, int n);
-double sum_2(double x, int n);
+using namespace std;
 
-int main()
+int main() 
 {
-    int n = 2;
-    double x = 1.0;
-    std::cout << sum(x, n) << std::endl;
-    std::cout << sum_2(x, n);
-    return 0;
-}
-
-int factorial(int n)
-{
-    if (n <= 1)
-        return 1;
-    else
-        return n * factorial(n-1);
-}
-
-double function(double x, int n)
-{
-    return pow(x, 2*n+1) / factorial(2*n+1);
-}
-
-double sum(double x, int n)  // через рекурсию
-{
-    if (n == 0)
-        return x;
-    else    
-        return sum(x, n-1) + function(x, n);
-}
-
-double sum_2(double x, int n) // через цикл в функции
-{
-    double result = 0; 
-    for (int i = 0; i <= n; i++) {
-        result += function(x, i);
+    cout << "Введите текст: ";
+    string text;
+    getline(cin, text);
+    int num_points = text.size();
+    for (int i = 0; i < num_points; ++i) 
+    {
+        double x = i * 5 * M_PI / num_points;
+        double y = sin(x);
+        int num_spaces = static_cast<int>((1 + y) * 20);
+        for (int j = 0; j < num_spaces; ++j) 
+        {
+            std::cout << "  ";
+        }
+        std::cout << text[i] << "\n";
     }
-    return result;
+    return 0;
 }
